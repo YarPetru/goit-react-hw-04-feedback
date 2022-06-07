@@ -1,14 +1,15 @@
 import shortid from 'shortid';
+import s from './FeedbackOptions.module.css';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <ul className="buttonsList">
+    <ul className={s.buttonsList}>
       {options.map(option => (
-        <li key={shortid.generate()}>
+        <li className={s.feedbackItem} key={shortid.generate()}>
           <button
             type="button"
             value={option}
-            className="feedbackBtn"
+            className={s.feedbackBtn}
             onClick={onLeaveFeedback}
           >
             {option}

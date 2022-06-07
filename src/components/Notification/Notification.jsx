@@ -1,5 +1,9 @@
 const Notification = ({ message }) => {
-  return <p className="noti">{message}</p>;
+  return (
+    <p style={{ color: '#ff5252' }} className="noti">
+      {message}
+    </p>
+  );
 };
 
 export default Notification;
