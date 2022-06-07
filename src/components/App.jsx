@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+import Statistics from './Statistics';
+import FeedbackOptions from './FeedbackOptions';
+import Section from './Section';
+import Notification from './Notification';
+
 export class App extends Component {
   state = {
     good: 0,
@@ -50,50 +55,33 @@ export class App extends Component {
 
   render() {
     const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
+
+    const { good, neutral, bad } = this.state;
     return (
       <div className="App">
-        <h2 className="title">Please leave feedback</h2>
-        <ul className="buttonsList">
-          <li>
-            <button
-              type="button"
-              value="good"
-              className="feedbackBtn"
-              onClick={this.handleVoteCounter}
-            >
-              Good
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              value="neutral"
-              className="feedbackBtn"
-              onClick={this.handleVoteCounter}
-            >
-              Neutral
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              value="bad"
-              className="feedbackBtn"
-              onClick={this.handleVoteCounter}
-            >
-              Bad
-            </button>
-          </li>
-        </ul>
-        {/* <section title="Statistics" className="Statistics"></section> */}
-        {total !== 0 && <h2 className="title">Stactistics</h2>}
-        <ul className="feedbacksList">
-          <li>Good: {this.state.good}</li>
-          <li>Neutral: {this.state.neutral}</li>
-          <li>Bad: {this.state.bad}</li>
-          <li>Total: {total} </li>
-          <li>Positive Feedback: {this.countPositiveFeedbackPercentage()}</li>
-        </ul>
+        {/* <h2 className="title">Please leave feedback</h2> */}
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            // options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={this.handleVoteCounter}
+          />
+        </Section>
+
+        <Section title="Statistics">
+          {total === 0 ? (
+            <Notification message="There is no feedback" />
+          ) : (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          )}
+        </Section>
       </div>
     );
   }
