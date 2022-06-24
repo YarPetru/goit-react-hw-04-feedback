@@ -4,11 +4,22 @@ import PropTypes from 'prop-types';
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
     <ul className={s.feedbacksList}>
-      <li>Good: {good}</li>
-      <li>Neutral: {neutral}</li>
-      <li>Bad: {bad}</li>
-      <li>Total: {total} </li>
-      <li>Positive Feedback: {positivePercentage}</li>
+      <li className={s.statItem}>
+        Good: <span className={s.statValue}>{good}</span>
+      </li>
+      <li className={s.statItem}>
+        Neutral: <span className={s.statValue}>{neutral}</span>
+      </li>
+      <li className={s.statItem}>
+        Bad: <span className={s.statValue}>{bad}</span>
+      </li>
+      <li className={s.statItem}>
+        Total: <span className={s.statValue}>{total}</span>
+      </li>
+      <li className={s.statItem}>
+        Positive Feedback:
+        <span className={s.statValue}>{positivePercentage}</span>
+      </li>
     </ul>
   );
 };

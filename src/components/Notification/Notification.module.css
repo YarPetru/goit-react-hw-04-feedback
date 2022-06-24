@@ -1,0 +1,4 @@
+.noti {
+  text-shadow: var(--text-shadow);
+  color: var(--accent-color);
+}

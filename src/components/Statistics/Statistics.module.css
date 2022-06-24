@@ -1,4 +1,9 @@
 .feedbacksList {
   list-style: none;
   padding: 0;
+  text-shadow: var(--text-shadow);
+}
+
+.statValue {
+  font-weight: 600;
 }
